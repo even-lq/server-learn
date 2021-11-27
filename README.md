@@ -11,5 +11,13 @@ Server development learning
 
 ```shell
 npm init -y
+npm install nodemon cross-env --save-dev
+
 ```
+
+## 开发
+
+### 接口设计
+
+![接口设计](E:\study\StudyProjects\server-learn\learn-pic\接口设计.png)
 
