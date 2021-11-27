@@ -6,3 +6,10 @@ Server development learning
 1. DNS解析，建立TCP连接，发送HTTP请求
 2. server接收到http请求，处理并返回
 3. 客户端接收到返回的数据，处理数据（如渲染页面，执行js）
+
+## 搭建环境
+
+```shell
+npm init -y
+```
+
