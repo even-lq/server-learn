@@ -21,3 +21,7 @@ npm install nodemon cross-env --save-dev
 
 ![接口设计](E:\study\StudyProjects\server-learn\learn-pic\接口设计.png)
 
+### 路由处理过程
+
+![访问路由获取信息流程图](E:\study\StudyProjects\server-learn\learn-pic\访问路由获取信息流程图.png)
+
