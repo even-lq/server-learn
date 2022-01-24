@@ -47,7 +47,7 @@ const serverHandle = (req, res) => {
     if (blogResult) {
       blogResult.then(blogData => {
         res.end(JSON.stringify(blogData));
-      });
+      }).catch(err => console.log(err));
       return;
     }
     
@@ -58,9 +58,11 @@ const serverHandle = (req, res) => {
     // }
 
     // 处理user路由
-    const userData = handleUserRouter(req, res);
-    if (userData) {
-      res.end(JSON.stringify(userData));
+    const userRes = handleUserRouter(req, res);
+    if (userRes) {
+      userRes.then(userData => {
+        res.end(JSON.stringify(userData));
+      }).catch(err => console.log(err));
       return;
     }
 

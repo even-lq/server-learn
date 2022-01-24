@@ -42,7 +42,7 @@ const handleBlogRouter = (req, res) => {
   // 更新一篇博客
   if (method === 'POST' && path === '/api/blog/update') {
     const result = updateBlog(id, req.body);
-    return result ? new SuccessModel('success') : new ErrorModel('error')
+    return result.then(val => val ? new SuccessModel('success update') : new ErrorModel('error update'));
   }
 
   // 删除一篇博客
