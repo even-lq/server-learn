@@ -42,7 +42,6 @@ const updateBlog = (id, blogData = {}) => {
 }
 
 const deleteBlog = (id) => {
-  console.log('deleteBlog', id)
   return true
 }
 module.exports = {
