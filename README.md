@@ -9,10 +9,23 @@ Server development learning
 
 ## 搭建环境
 
-```shell
+```javascript
 npm init -y
 npm install nodemon cross-env --save-dev
 
+// 启动node服务
+npm run dev
+
+// 为前端启动一个服务
+http-server -p 8001
+
+// 启动redis
+打开一个cmd redis-server.exe
+打开另一个cmd redis-cli.exe -h 127.0.0.1 -p 6379
+
+// 启动nginx
+start nginx
+nginx -s reload（重启nginx）
 ```
 
 ## 开发
@@ -84,3 +97,9 @@ session是js变量放在nodejs进程内存中
 3. 数据量
 
    session数据量不会太大(相比于mysq|中存储的数据)
+
+### 完整登录流程
+
+![登录流程图](E:\study\StudyProjects\server-learn\learn-pic\登录流程图.png)
+
+### 日志

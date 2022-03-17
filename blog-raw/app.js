@@ -12,9 +12,7 @@ const getCookieExpires = () => {
   return d.toGMTString();
 }
 
-// session 数据
-// const SESSION_DATA = {};
-
+// post是异步的
 const getPostData = (req) => {
   const promise = new Promise((resolve, reject) => {
     if (req.method !== 'POST' || req.headers['content-type'] !== 'application/json') {
@@ -49,6 +47,7 @@ const serverHandle = (req, res) => {
 
   // 解析query
   req.query = qs.parse(url.split('?')[1]);
+  console.log('host', req.headers);
 
   // 解析 cookie
   req.cookie = {};
@@ -61,7 +60,6 @@ const serverHandle = (req, res) => {
     const key = arr[0];
     const val = arr[1];
     req.cookie[key] = val;
-    console.log('req.cookie', req.cookie)
   });
 
   // 使用redis解析 session
@@ -88,12 +86,14 @@ const serverHandle = (req, res) => {
         // 设置session
         req.session = sessionData;
       }
-      console.log('req.session', req.session);
+      // console.log('req.session', req.session);
 
       // 处理post data
       return getPostData(req);
     })
     .then(postData => {
+
+      // req.body给router里面的post用
       req.body = postData;
 
       // 处理blog路由
@@ -107,12 +107,6 @@ const serverHandle = (req, res) => {
         }).catch(err => console.log(err));
         return;
       }
-      
-      // const blogData = handleBlogRouter(req, res);
-      // if (blogData) {
-      //   res.end(JSON.stringify(blogData));
-      //   return;
-      // }
 
       // 处理user路由
       const userRes = handleUserRouter(req, res);
@@ -137,5 +131,3 @@ const serverHandle = (req, res) => {
 }
 
 module.exports = serverHandle;
-
-// process.env.NODE_ENV
