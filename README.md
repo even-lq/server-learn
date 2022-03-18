@@ -103,3 +103,21 @@ session是js变量放在nodejs进程内存中
 ![登录流程图](E:\study\StudyProjects\server-learn\learn-pic\登录流程图.png)
 
 ### 日志
+
+#### 日志拆分
+
+- 日志内容会慢慢积累，放在一个文件中不好处理
+- 按时间划分日志文件，如2019-02-10.access.log
+- 实现方式：linux的crontab命令,即定时任务
+
+#### crontab
+
+- 设置定时任务，格式：\*(min)\*(hour)\*(date)\*(month)*(week)command
+- 将access.log拷贝并重命名为2019-02-10.access.log
+- 空access.log文件，继续积累日志
+
+### 安全
+
+#### sql注入
+
+ 
