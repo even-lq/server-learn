@@ -1,5 +1,6 @@
 const qs = require('qs');
 const { get, set } = require('./src/db/redis');
+const { access } = require('./src/utils/log')
 const {
   handleBlogRouter,
   handleUserRouter
@@ -37,6 +38,9 @@ const getPostData = (req) => {
 }
 
 const serverHandle = (req, res) => {
+
+  // 记录acess log
+  access(`${req.method} -- ${req.url} -- ${req.headers['user-agent']} -- ${Date.now()}`)
 
   // 设置返回格式 JSON
   res.setHeader('Content-type', 'application/json');
