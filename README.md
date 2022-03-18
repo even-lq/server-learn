@@ -120,4 +120,42 @@ session是js变量放在nodejs进程内存中
 
 #### sql注入
 
- 
+常见的有表单输入时，攻击者输入一串sql语句进行攻击
+
+解决：
+
+1. mysql的escape函数（将输入的内容转成字符串进行验证）
+2. 
+
+#### xss攻击
+
+在页面展示内容中掺杂js代码，以获取网页信息。常见的有表单输入时，攻击者输入一段script代码进行攻击，比如
+
+```javascript
+<script>alert(document.cookie)</script>
+<script>alert(1)</script>
+```
+
+解决：
+
+1. 对关键字符进行转义（使用xss函数会对<>尖括号进行转义）
+
+   ```javascript
+   npm i xss --save
+   let { title, content, author } = xss(blogData);
+   title = xss(title);
+   
+   // 转义后
+   &lt;script&gt;alert ( document. cookie)&lt; /script&gt;
+   ```
+
+2. httpOnly（对于cookie的xss攻击预防）
+
+   客户端无法通过脚本代码访问cookie，比如document.cookie
+
+   ```js
+   res.setHeader('Set-Cookie', `userid=${userId}; path=/; httpOnly; expires=${getCookieExpires()}`);
+   ```
+
+   
+

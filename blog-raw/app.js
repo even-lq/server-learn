@@ -51,7 +51,6 @@ const serverHandle = (req, res) => {
 
   // 解析query
   req.query = qs.parse(url.split('?')[1]);
-  console.log('host', req.headers);
 
   // 解析 cookie
   req.cookie = {};
@@ -90,7 +89,6 @@ const serverHandle = (req, res) => {
         // 设置session
         req.session = sessionData;
       }
-      // console.log('req.session', req.session);
 
       // 处理post data
       return getPostData(req);
@@ -116,7 +114,6 @@ const serverHandle = (req, res) => {
       const userRes = handleUserRouter(req, res);
       if (userRes) {
         userRes.then(userData => {
-          console.log('userData', userData)
           if (needSetCookie && userData.errno !== -1) {
             res.setHeader('Set-Cookie', `userid=${userId}; path=/; httpOnly; expires=${getCookieExpires()}`);
           }
