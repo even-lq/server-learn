@@ -1,41 +1,13 @@
-# server-learn
-Server development learning
-
-## server和前端的区别
-
-### 五个区别
-
-- 服务稳定性(最后讲)
-- 内存CPU (优化扩展)
-- 日志记录
-- 安全(包括登录验证)
-- 集群和服务拆分(设计已支持)
-
-## 从输入url到显示页面的过程
-
-1. DNS解析，建立TCP连接，发送HTTP请求
-2. server接收到http请求，处理并返回
-3. 客户端接收到返回的数据，处理数据（如渲染页面，执行js）
-
+# express开发博客
 ## 搭建环境
 
 ```javascript
-npm init -y
-npm install nodemon cross-env --save-dev
+// 脚手架搭建
+npm i express-generator -g
+express blog-express
 
-// 启动node服务
-npm run dev
-
-// 为前端启动一个服务
-http-server -p 8001
-
-// 启动redis
-打开一个cmd redis-server.exe
-打开另一个cmd redis-cli.exe -h 127.0.0.1 -p 6379
-
-// 启动nginx
-start nginx
-nginx -s reload（重启nginx）
+// 辅助工具
+npm i nodemon cross-env --save-dev 
 ```
 
 ## 开发
